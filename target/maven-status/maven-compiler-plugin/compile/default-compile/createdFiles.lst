@@ -1,5 +1,0 @@
-com\testfalabella\main\util\Encode.class
-com\testfalabella\main\service\IEncodeService.class
-com\testfalabella\main\controller\EncodeController.class
-com\testfalabella\main\service\EncodeServiceImpl.class
-com\testfalabella\main\TestfalabellaApplication.class
