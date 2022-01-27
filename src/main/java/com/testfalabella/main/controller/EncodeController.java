@@ -20,26 +20,36 @@ public class EncodeController {
 	}
 
 	@GetMapping("/encode")
-	public ResponseEntity<?> setEnconde(@RequestParam(name = "word") String word) {
+	public ResponseEntity<String> setEnconde(@RequestParam(name = "word") String word) {
 		if (word.isEmpty() || word.isBlank() || null == word) {
 			return new ResponseEntity<>("palabra no es valida", HttpStatus.BAD_REQUEST);
 		}
-		if (null != encodeServiceImpl.setEnconde(word)) {
+		try {
+			if (null != encodeServiceImpl.setEnconde(word)) {
 
-			return new ResponseEntity<>("Falabella es el mejor retail", HttpStatus.OK);
+				return new ResponseEntity<>("Falabella es el mejor retail", HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
 		}
-
+		
 		return new ResponseEntity<>("Error en la palabra", HttpStatus.CONFLICT);
 
 	}
 
 	@GetMapping("/decode")
 	public ResponseEntity<?> getDecode(@RequestParam(name = "codedword") String codedWord) {
-		if (null != encodeServiceImpl.getDecode(codedWord)) {
-			return new ResponseEntity<>("palabra riginal : "+encodeServiceImpl.getDecode(codedWord), HttpStatus.OK);
+		try {
+			if (null != encodeServiceImpl.getDecode(codedWord)) {
+				return new ResponseEntity<>("palabra riginal : "+encodeServiceImpl.getDecode(codedWord), HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
 		}
 
-		return new ResponseEntity<>("Palabra no encontrada", HttpStatus.CONFLICT);
+		return new ResponseEntity<>("Palabra no encontrada", HttpStatus.NOT_FOUND);
 	}
 
 }

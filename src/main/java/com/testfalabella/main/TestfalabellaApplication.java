@@ -9,10 +9,10 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class TestfalabellaApplication {
+public class TestFalabellaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestfalabellaApplication.class, args);
+		SpringApplication.run(TestFalabellaApplication.class, args);
 	}
 
 	@Bean

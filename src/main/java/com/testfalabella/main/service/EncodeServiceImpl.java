@@ -11,20 +11,24 @@ import com.testfalabella.main.util.Encode;
 public class EncodeServiceImpl implements IEncodeService {
 
 	@Override
-	public String setEnconde(String word) {
+	public String setEnconde(String word) throws Exception {
 		String encodedString = null;
 		Encode encode = new Encode();
 		if (encode.isWordValid(word)) {
 			encodedString = Base64.getEncoder().encodeToString(word.getBytes());
 			System.out.println("palabra codificada " + encodedString);
+		} else {
+			throw new Exception();
 		}
 		return encodedString;
 	}
 
 	@Override
-	public String getDecode(String codedWord) {
+	public String getDecode(String codedWord) throws Exception {
+
 		Decode decode = new Decode();
 		return decode.decode(codedWord);
+
 	}
 
 }
